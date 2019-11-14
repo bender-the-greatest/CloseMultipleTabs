@@ -1,0 +1,18 @@
+{
+    "name": "Close Multiple Tabs",
+    "version": "1.0",
+    "description": "Close tabs besides the one you currently have up.",
+    "manifest_version": 2,
+    "permissions": [
+        "contextMenus"
+    ],
+    "background": {
+        "scripts": [
+            "TabClose.js"
+        ],
+        "persistent": false
+    },
+    "icons": {
+        "1024": "icons/1024icon.png"
+    }
+}
