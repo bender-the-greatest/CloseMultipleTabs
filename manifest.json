@@ -13,6 +13,6 @@
         "persistent": false
     },
     "icons": {
-        "1024": "icons/1024icon.png"
+        "128": "icons/icon.png"
     }
 }
