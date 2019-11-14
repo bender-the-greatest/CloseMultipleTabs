@@ -1,4 +1,4 @@
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(function () {
     chrome.contextMenus.create({
         id: 'close-other-tabs',
         title: 'Close other tabs',
@@ -32,8 +32,8 @@ chrome.runtime.onInstalled.addListener(function() {
     });
 });
 
-chrome.contextMenus.onClicked.addListener(function(info, tab) {
-    switch(info.menuItemId){
+chrome.contextMenus.onClicked.addListener(function (info, tab) {
+    switch (info.menuItemId) {
         case 'close-other-tabs':
             closeOtherTabs();
             break;
@@ -54,19 +54,17 @@ function performActionOnTab(tabCallback) {
 }
 
 function closeOtherTabs() {
-    if (confirm('Are you sure you want to close all tabs besides this one?')) {
-        performActionOnTab(function (currentTab) {
-            if (currentTab) {
-                chrome.tabs.query({ currentWindow: true, pinned: false }, function (tabs) {
-                    for (var i = 0; i < tabs.length; i++) {
-                        if (tabs[i].index != currentTab.index) {
-                            chrome.tabs.remove(tabs[i].id, null);
-                        }
+    performActionOnTab(function (currentTab) {
+        if (currentTab) {
+            chrome.tabs.query({ currentWindow: true, pinned: false }, function (tabs) {
+                for (var i = 0; i < tabs.length; i++) {
+                    if (tabs[i].index != currentTab.index) {
+                        chrome.tabs.remove(tabs[i].id, null);
                     }
-                });
-            }
-        });
-    }
+                }
+            });
+        }
+    });
 }
 
 function closeLeftTabs() {
@@ -98,15 +96,13 @@ function closeRightTabs() {
 }
 
 function closeAllTabs() {
-    if (confirm('Are you sure you want to close ALL tabs?')) {
-        performActionOnTab(function (currentTab) {
-            if (currentTab) {
-                chrome.tabs.query({ currentWindow: true, pinned: false }, function (tabs) {
-                    for (var i = 0; i < tabs.length; i++) {
-                        chrome.tabs.remove(tabs[i].id, null);
-                    }
-                });
-            }
-        });
-    }
+    performActionOnTab(function (currentTab) {
+        if (currentTab) {
+            chrome.tabs.query({ currentWindow: true, pinned: false }, function (tabs) {
+                for (var i = 0; i < tabs.length; i++) {
+                    chrome.tabs.remove(tabs[i].id, null);
+                }
+            });
+        }
+    });
 }

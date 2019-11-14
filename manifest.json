@@ -1,6 +1,6 @@
 {
     "name": "Close Multiple Tabs",
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "Close tabs besides the one you currently have up.",
     "manifest_version": 2,
     "permissions": [
